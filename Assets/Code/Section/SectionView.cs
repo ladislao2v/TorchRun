@@ -1,3 +1,4 @@
+using Code.FireBonus;
 using DG.Tweening;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ namespace Code.Section
     public class SectionView : MonoBehaviour
     {
         [SerializeField] private GameObject[] _variants;
+        [SerializeField] private FireBonusView[] _fireBonuses;
         [SerializeField] private float _duration = 2f;
 
         private Transform _transform;
@@ -31,6 +33,9 @@ namespace Code.Section
 
         public void Reset(Vector3 newPosition)
         {
+            foreach (var bonus in _fireBonuses)
+                bonus.Show();
+            
             foreach (var variant in _variants)
                 variant.SetActive(false);
             

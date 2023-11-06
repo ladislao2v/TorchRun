@@ -22,21 +22,18 @@ namespace Code.FireBonus
             if (other.TryGetComponent(out PlayerView playerView))
             {   
                 _fireCounterService.AddFire();
-                gameObject.SetActive(false);
+                Hide();
             }
         }
 
-        private void Reset(Vector3 position)
+        public void Show()
         {
-            transform.position = position;
+            gameObject.SetActive(true);
         }
 
-        public class Pool : MemoryPool<Vector3, FireBonusView>
+        public void Hide()
         {
-            protected override void Reinitialize(Vector3 position, FireBonusView item)
-            {
-                item.Reset(position);
-            }
+            gameObject.SetActive(false);
         }
     }
 }
